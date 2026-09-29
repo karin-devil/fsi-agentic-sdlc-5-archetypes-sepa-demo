@@ -1,0 +1,7 @@
+{
+  "schema": "urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08",
+  "persona": "EuroBank CAPCom VDI (A-23) \u2014 1,500 POs & Test Analysts",
+  "synthetic_guardrail": "Verified by .agents/hooks/lane1_pii_iban_guard.py",
+  "scenarios_generated": 8,
+  "feature_file": "src/test/resources/features/sepa_instant_cutoff.feature"
+}

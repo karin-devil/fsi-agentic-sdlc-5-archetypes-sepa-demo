@@ -1,0 +1,69 @@
+! ==============================================================================
+! LEGACY ARTIFACT: SecOffice Gupta Team Developer (SQLWindows 4GL) Limit & AML Check
+! Module: secoffice_limit_check.apt (AppRaMo 2030 Brownfield Migration Target)
+! Author: EuroBank SecOffice Core Team (2014-2021)
+! Target Migration: Java 21 com.coba.payments.SepaInstantValidator (APPRAMO-4821)
+! ==============================================================================
+
+Function: fnSecOfficeValidateInstantLimit
+  Description: Enforces EUR 100,000.00 SCT Inst limit, Bankers' Rounding (HALF_EVEN),
+               BaFin MaRisk AT 7.2 AML Freeze (RR04), and Intraday Liquidity (AM04).
+  Returns
+    Boolean: bAccepted
+  Parameters
+    Number: nRawAmountEur
+    Number: nAvailableLiquidityEur
+    String: sAccountStatus
+    String: sAmlFlag
+    String: sDebtorIban
+    Receive String: sIsoReason
+    Receive String: sLegacyCode
+    Receive Number: nRoundedAmountEur
+    Receive Number: nCalculatedFeeEur
+    Receive Boolean: bBafinAuditRequired
+  Local Variables
+    Number: MAX_SCT_INST_EUR
+    Number: INSTANT_FEE_BPS
+  Actions
+    Set MAX_SCT_INST_EUR = 100000.00
+    Set INSTANT_FEE_BPS = 0.0015
+    Set bBafinAuditRequired = FALSE
+
+    ! FI-03: Bankers' Rounding (Half-Even) to 2 decimal places
+    Set nRoundedAmountEur = SalNumberRoundEven( nRawAmountEur, 2 )
+    Set nCalculatedFeeEur = SalNumberRoundEven( nRoundedAmountEur * INSTANT_FEE_BPS, 2 )
+
+    ! Guard against zero or negative payment amounts
+    If nRoundedAmountEur <= 0.00
+      Set sIsoReason = 'AM09'
+      Set sLegacyCode = 'INVALID_NON_POSITIVE_AMOUNT'
+      Return FALSE
+
+    ! FI-05: BaFin AML & Sanctions Freeze Check (Highest Regulatory Priority)
+    If sAmlFlag = 'FREEZE' Or sDebtorIban = 'DE00999999990000000000'
+      Set sIsoReason = 'RR04'
+      Set sLegacyCode = 'DE_BAFIN_AML_FREEZE'
+      Set bBafinAuditRequired = TRUE
+      Return FALSE
+
+    ! FI-06a: Closed Account Check
+    If sAccountStatus = 'CLOSED'
+      Set sIsoReason = 'AC04'
+      Set sLegacyCode = 'ACCOUNT_CLOSED'
+      Return FALSE
+
+    ! FI-02: Maximum SEPA Instant Limit (EUR 100,000.00 inclusive)
+    If nRoundedAmountEur > MAX_SCT_INST_EUR
+      Set sIsoReason = 'AM02'
+      Set sLegacyCode = 'SECOFFICE_LIMIT_EXCEEDED_100K'
+      Return FALSE
+
+    ! FI-06b: Intraday Liquidity Sufficiency Check
+    If nAvailableLiquidityEur < nRoundedAmountEur
+      Set sIsoReason = 'AM04'
+      Set sLegacyCode = 'INSUFFICIENT_LIQUIDITY'
+      Return FALSE
+
+    Set sIsoReason = 'ACCP'
+    Set sLegacyCode = 'OK_SCT_INST_ACCEPTED'
+    Return TRUE

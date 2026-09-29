@@ -1,0 +1,4 @@
+build/classes/
+__pycache__/
+*.pyc
+.DS_Store

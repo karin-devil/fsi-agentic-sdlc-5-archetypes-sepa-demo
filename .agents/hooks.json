@@ -1,0 +1,27 @@
+{
+  "description": "EuroBank Dual-Lane Governance Hooks — Enforces Lane 1 (Consumer-Speed Sandbox) PII/IBAN/Secret blocking and Lane 2 DASY audit logging.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .agents/hooks/lane1_pii_iban_guard.py --event=UserPromptSubmit"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|Bash|run_command|write_to_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .agents/hooks/lane1_pii_iban_guard.py --event=PreToolUse"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+# Regulated FSI Agentic SDLC Blueprint: 5 Agent Archetypes, Dual-Lane Governance & SEPA Instant Modernization
+
+> Project SPARK (`#spark-build` `#spark-build-days` `#emea-asset`) reference blueprint for regulated Financial Services Institutions (FSI / European Tier-1 Banking). Demonstrates how to combine Antigravity (AGY), `/teamwork-preview` 5-Archetype Multi-Agent Orchestration, Google ADK 2.0, Cloud Spanner Graph MCP, and NIST OSCAL 1.1.2 compliance dossiers to modernize legacy XML/XSLT and Gupta Team Developer 4GL payment systems into Java 21 under BaFin MaRisk AT 7.2 and EU DORA Articles 9 & 11.
+
+## Core Documentation
+- [README.md](README.md): Architecture overview, complete artifact descriptions & goals, and quickstart commands.
+- [ARTIFACT_CATALOG.md](ARTIFACT_CATALOG.md): Detailed reference explaining every artifact's description, strategic goal, target persona, and verification command.
+- [AGENTS.md](AGENTS.md): Instructions and tool/skill mappings for AI coding agents.
+- [agent-catalog.json](agent-catalog.json): Machine-searchable JSON manifest of all 5 Agent Archetypes, 4 Skills, Prompts, Hooks, and Datasets.
+
+## The 5 Agent Archetypes (`agents/`)
+- [coba-01-sentinel-spec-refiner](agents/coba-01-sentinel-spec-refiner.md): Captures immutable `ORIGINAL_REQUEST.md` and executes the 5-Stage Spec Pipeline (`/ideate` -> `/pm-grill-me` -> `/write-prd` -> `/red-team-prd` -> `/decompose-epic`).
+- [coba-02-explorer-doku-miner](agents/coba-02-explorer-doku-miner.md): Queries 10M-LoC Cloud Spanner Graph via MCP and mines legacy `TRACE XSLT` and `SecOffice GuptaTD 4GL` business rules into `PROJECT.md` and living C4/Arc42 docs.
+- [coba-03-opaque-e2e-test-architect](agents/coba-03-opaque-e2e-test-architect.md): Track 2 cognitively isolated Opaque-Box 5-Tier E2E Test Architect & Cucumber/Gherkin BDD synthesizer for 1,500+ POs & Test Analysts.
+- [coba-04-armed-codmod-worker](agents/coba-04-armed-codmod-worker.md): Track 1 exclusive code write-owner implementing Java 21 `SepaInstantValidator.java` with `BigDecimal` `RoundingMode.HALF_EVEN`.
+- [coba-05-forensic-auditor-dasy-gate](agents/coba-05-forensic-auditor-dasy-gate.md): 6-Eyes Reviewer, Empirical Challenger, Forensic Auditor (hard binary veto) & NIST OSCAL 1.1.2 compliance dossier exporter.
+
+## Reusable Skills (`skills/`)
+- [pm-grill-me](skills/pm-grill-me/SKILL.md): Socratic requirement hardening skill for banking precision, SLA cutoffs, and ISO-20022 taxonomy.
+- [sepa-modernization](skills/sepa-modernization/SKILL.md): Legacy XSLT & GuptaTD 4GL to Java 21 migration rules.
+- [coba-bdd-synthesizer](skills/coba-bdd-synthesizer/SKILL.md): Generates Cucumber/Gherkin `.feature` suites and synthetic ISO-20022 `pacs.008.001.08` payloads.
+- [dasy-oscal-exporter](skills/dasy-oscal-exporter/SKILL.md): Compiles `.agents/teamwork/` verification evidence into a SHA-256 signed OSCAL 1.1.2 JSON compliance dossier.

@@ -1,0 +1,133 @@
+{
+  "oscal-version": "1.1.2",
+  "assessment-results": {
+    "uuid": "coba-dasy-appramo-2030-sepa-instant-0001",
+    "metadata": {
+      "title": "EuroBank DASY Automated Governance & Compliance Dossier \u2014 AppRaMo 2030 SEPA Instant Modernization",
+      "published": "2026-09-29T20:25:31Z",
+      "version": "2026.09.29-v1",
+      "oscal-version": "1.1.2",
+      "TargetApplication": "AppRaMo 2030 \u2014 TRACE XSLT & SecOffice GuptaTD -> Java 21 (SepaInstantValidator)",
+      "JiraReference": "APPRAMO-4821",
+      "GovernancePlatform": "EuroBank DASY (Governance Lead) + OneCI Quality Gate (CCoE Platform Lead)"
+    },
+    "six-eyes-separation-of-duties": {
+      "track_1_armed_worker": "coba-04-armed-codmod-worker (Exclusive Write-Owner on src/main/java)",
+      "track_2_opaque_test_architect": "coba-03-opaque-e2e-test-architect (Opaque-Box Test Suite from ORIGINAL_REQUEST.md)",
+      "eyes_1_2_reviewer": "coba-05-forensic-auditor-dasy-gate (Code Review Pillar)",
+      "eyes_3_4_empirical_challenger": "coba-05-forensic-auditor-dasy-gate (Adversarial Boundary Challenger)",
+      "eyes_5_6_forensic_auditor": "coba-05-forensic-auditor-dasy-gate (Non-Skippable Hard Binary Veto)",
+      "cognitive_isolation_verified": true,
+      "forensic_auditor_verdict": "PASS"
+    },
+    "regulatory-control-mappings": [
+      {
+        "framework": "BaFin MaRisk AT 7.2 / BAIT",
+        "control_id": "AT-7.2-CHG-01",
+        "description": "Deterministic monetary precision (BigDecimal HALF_EVEN) and 6-Eyes separation between code author and test verifier.",
+        "status": "SATISFIED",
+        "evidence_refs": [
+          ".agents/teamwork/GATE_STATUS.md",
+          "src/main/java/com/coba/payments/SepaInstantValidator.java"
+        ]
+      },
+      {
+        "framework": "EU DORA (Regulation 2022/2554)",
+        "control_id": "DORA-ART-9-ISOLATION",
+        "description": "Dual-Lane data isolation via deterministic PreToolUse hook blocking real customer IBANs and Zone 2/3 internal hosts in Lane 1.",
+        "status": "SATISFIED",
+        "evidence_refs": [
+          ".agents/hooks.json",
+          ".agents/hooks/lane1_pii_iban_guard.py"
+        ]
+      },
+      {
+        "framework": "EU DORA (Regulation 2022/2554)",
+        "control_id": "DORA-ART-11-FORENSIC-AUDIT",
+        "description": "5-Tier automated resilience & boundary testing (10,000ms SCT Inst SLA cutoff, EUR 100,000.00 limit, AML freeze RR04).",
+        "status": "SATISFIED",
+        "evidence_refs": [
+          ".agents/teamwork/TEST_READY.md",
+          ".agents/teamwork/DEAD_ENDS.md"
+        ]
+      },
+      {
+        "framework": "EPC SEPA Instant Credit Transfer (SCT Inst)",
+        "control_id": "ISO-20022-PACS-008-001-08",
+        "description": "100% legacy parity across FI-01..FI-06 (AB05, AM02, AM09, RC01, RR04, AC04, AM04).",
+        "status": "SATISFIED",
+        "evidence_refs": [
+          ".agents/teamwork/PROJECT.md",
+          "src/test/resources/features/sepa_instant_cutoff.feature"
+        ]
+      }
+    ],
+    "five-tier-verification-summary": {
+      "tier_1_smoke_and_static_contract": "PASS (0 double/float, 0 TODO/FIXME, 0 mocks)",
+      "tier_2_functional_business_rules": "PASS (6/6 legacy rules FI-01..FI-06 verified)",
+      "tier_3_boundary_and_half_even_precision": "PASS (EUR 100,000.00 vs 100,000.01; 10,000ms vs 10,001ms; HALF_EVEN 0.005/0.015/0.025/0.035)",
+      "tier_4_iso20022_and_bafin_audit_telemetry": "PASS (pacs.002 status reasons + BaFin AML audit flags verified)",
+      "tier_5_whitebox_adversarial_and_concurrency": "PASS (100 concurrent virtual-thread validations + null/malformed payload injection)",
+      "total_assertions_executed": 28,
+      "total_failures": 0
+    },
+    "artifact-sha256-attestations": [
+      {
+        "path": ".agents/teamwork/ORIGINAL_REQUEST.md",
+        "sha256": "eb7ee84ef31aabf6e58845e7a920daf909c113b4dfefff7db0c4a25d5dae8db5",
+        "status": "VERIFIED"
+      },
+      {
+        "path": ".agents/teamwork/PROJECT.md",
+        "sha256": "d92502e1db50127e86e99ff8290a1cd9032ea1c14a495083f28ed21d4e6ebac6",
+        "status": "VERIFIED"
+      },
+      {
+        "path": ".agents/teamwork/TEST_INFRA.md",
+        "sha256": "6ec712459c6e3bd768f8d4a16f041a84b96472725d01a38c971eb80f222de10e",
+        "status": "VERIFIED"
+      },
+      {
+        "path": ".agents/teamwork/GATE_STATUS.md",
+        "sha256": "dbe3fb43aa410397dbd456da2bcb32796f73f34647f2a706e6adb8076eff3f36",
+        "status": "VERIFIED"
+      },
+      {
+        "path": ".agents/teamwork/DEAD_ENDS.md",
+        "sha256": "cdfde9376949f0c76797761b6165b87f73f33cfe9c21eac70ed9e5cfd93eb7f8",
+        "status": "VERIFIED"
+      },
+      {
+        "path": ".agents/teamwork/TEST_READY.md",
+        "sha256": "299554f3c4e0ccdc24ecac79c6ebc66787d4d1725ec4408e3dccf7fab5bbc77c",
+        "status": "VERIFIED"
+      },
+      {
+        "path": "legacy/trace_sepa_instant_cutoff.xslt",
+        "sha256": "067b893276c13106d2090a20280c23f00eeb174ffde75499a4dfff1fef7c4bb4",
+        "status": "VERIFIED"
+      },
+      {
+        "path": "legacy/secoffice_limit_check.apt",
+        "sha256": "0f87f21c7f1816f55de796d269d25b3d0c0561b1b843c2d0249a39e53726972f",
+        "status": "VERIFIED"
+      },
+      {
+        "path": "src/main/java/com/coba/payments/SepaInstantValidator.java",
+        "sha256": "2049ace1ea8ad17c7633e2b0eec24a6f947905f5e478e835b4c39d0da7bc7238",
+        "status": "VERIFIED"
+      },
+      {
+        "path": "src/test/java/com/coba/payments/SepaInstantValidatorTest.java",
+        "sha256": "7de543de2bf862142883e4fc8650d938ef581a415d370809534f4dc9c6a7e74f",
+        "status": "VERIFIED"
+      },
+      {
+        "path": "src/test/resources/features/sepa_instant_cutoff.feature",
+        "sha256": "00cdda530d1e9d363091e72ee4afd5bf70aefb9dc95df674453702d9df627aff",
+        "status": "VERIFIED"
+      }
+    ]
+  },
+  "dasy_dossier_sha256_signature": "c7f0d53d3e020fb49fe28891e8bce5641324ee6184dd582775ee24a3b9b299d3"
+}
