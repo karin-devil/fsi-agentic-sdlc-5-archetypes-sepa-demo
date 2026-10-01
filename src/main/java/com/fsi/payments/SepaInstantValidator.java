@@ -1,4 +1,4 @@
-package com.coba.payments;
+package com.fsi.payments;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * Modernized Java 21 SEPA Instant (SCT Inst / ISO-20022 pacs.008.001.08) Validator.
  *
  * <p>Replaces legacy {@code legacy/trace_sepa_instant_cutoff.xslt} and
- * {@code legacy/secoffice_limit_check.apt} for EuroBank AppRaMo 2030 (Story APPRAMO-4821).
+ * {@code legacy/secoffice_limit_check.apt} for EuroBank CoreMod 2030 (Story COREMOD-4821).
  * Enforces BaFin MaRisk AT 7.2 and EU DORA Articles 9 & 11 monetary precision and audit rules.
  */
 public final class SepaInstantValidator {
@@ -203,8 +203,8 @@ public final class SepaInstantValidator {
                 new BigDecimal("2500.00"),
                 new BigDecimal("50000.00"),
                 420L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -217,8 +217,8 @@ public final class SepaInstantValidator {
                 new BigDecimal("100000.00"),
                 new BigDecimal("150000.00"),
                 10_000L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -230,8 +230,8 @@ public final class SepaInstantValidator {
                 new BigDecimal("100000.01"),
                 new BigDecimal("200000.00"),
                 1200L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -243,8 +243,8 @@ public final class SepaInstantValidator {
                 new BigDecimal("5000.00"),
                 new BigDecimal("50000.00"),
                 10_001L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -256,8 +256,8 @@ public final class SepaInstantValidator {
                 new BigDecimal("10.00"),
                 new BigDecimal("50000.00"),
                 300L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "XX00DEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -270,7 +270,7 @@ public final class SepaInstantValidator {
                 new BigDecimal("50000.00"),
                 500L,
                 "DE00999999990000000000",
-                "COBADEFFXXX",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "FREEZE"));
@@ -284,8 +284,8 @@ public final class SepaInstantValidator {
                 new BigDecimal("100.015"),
                 new BigDecimal("500.00"),
                 200L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -296,8 +296,8 @@ public final class SepaInstantValidator {
                 new BigDecimal("100.025"),
                 new BigDecimal("500.00"),
                 200L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));

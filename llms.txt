@@ -9,14 +9,14 @@
 - [agent-catalog.json](agent-catalog.json): Machine-searchable JSON manifest of all 5 Agent Archetypes, 4 Skills, Prompts, Hooks, and Datasets.
 
 ## The 5 Agent Archetypes (`agents/`)
-- [coba-01-sentinel-spec-refiner](agents/coba-01-sentinel-spec-refiner.md): Captures immutable `ORIGINAL_REQUEST.md` and executes the 5-Stage Spec Pipeline (`/ideate` -> `/pm-grill-me` -> `/write-prd` -> `/red-team-prd` -> `/decompose-epic`).
-- [coba-02-explorer-doku-miner](agents/coba-02-explorer-doku-miner.md): Queries 10M-LoC Cloud Spanner Graph via MCP and mines legacy `TRACE XSLT` and `SecOffice GuptaTD 4GL` business rules into `PROJECT.md` and living C4/Arc42 docs.
-- [coba-03-opaque-e2e-test-architect](agents/coba-03-opaque-e2e-test-architect.md): Track 2 cognitively isolated Opaque-Box 5-Tier E2E Test Architect & Cucumber/Gherkin BDD synthesizer for 1,500+ POs & Test Analysts.
-- [coba-04-armed-codmod-worker](agents/coba-04-armed-codmod-worker.md): Track 1 exclusive code write-owner implementing Java 21 `SepaInstantValidator.java` with `BigDecimal` `RoundingMode.HALF_EVEN`.
-- [coba-05-forensic-auditor-dasy-gate](agents/coba-05-forensic-auditor-dasy-gate.md): 6-Eyes Reviewer, Empirical Challenger, Forensic Auditor (hard binary veto) & NIST OSCAL 1.1.2 compliance dossier exporter.
+- [fsi-01-sentinel-spec-refiner](agents/fsi-01-sentinel-spec-refiner.md): Captures immutable `ORIGINAL_REQUEST.md` and executes the 5-Stage Spec Pipeline (`/ideate` -> `/pm-grill-me` -> `/write-prd` -> `/red-team-prd` -> `/decompose-epic`).
+- [fsi-02-explorer-doku-miner](agents/fsi-02-explorer-doku-miner.md): Queries 10M-LoC Cloud Spanner Graph via MCP and mines legacy `TRACE XSLT` and `SecOffice GuptaTD 4GL` business rules into `PROJECT.md` and living C4/Arc42 docs.
+- [fsi-03-opaque-e2e-test-architect](agents/fsi-03-opaque-e2e-test-architect.md): Track 2 cognitively isolated Opaque-Box 5-Tier E2E Test Architect & Cucumber/Gherkin BDD synthesizer for 1,500+ POs & Test Analysts.
+- [fsi-04-armed-codmod-worker](agents/fsi-04-armed-codmod-worker.md): Track 1 exclusive code write-owner implementing Java 21 `SepaInstantValidator.java` with `BigDecimal` `RoundingMode.HALF_EVEN`.
+- [fsi-05-forensic-auditor-dasy-gate](agents/fsi-05-forensic-auditor-dasy-gate.md): 6-Eyes Reviewer, Empirical Challenger, Forensic Auditor (hard binary veto) & NIST OSCAL 1.1.2 compliance dossier exporter.
 
 ## Reusable Skills (`skills/`)
 - [pm-grill-me](skills/pm-grill-me/SKILL.md): Socratic requirement hardening skill for banking precision, SLA cutoffs, and ISO-20022 taxonomy.
 - [sepa-modernization](skills/sepa-modernization/SKILL.md): Legacy XSLT & GuptaTD 4GL to Java 21 migration rules.
-- [coba-bdd-synthesizer](skills/coba-bdd-synthesizer/SKILL.md): Generates Cucumber/Gherkin `.feature` suites and synthetic ISO-20022 `pacs.008.001.08` payloads.
+- [fsi-bdd-synthesizer](skills/fsi-bdd-synthesizer/SKILL.md): Generates Cucumber/Gherkin `.feature` suites and synthetic ISO-20022 `pacs.008.001.08` payloads.
 - [dasy-oscal-exporter](skills/dasy-oscal-exporter/SKILL.md): Compiles `.agents/teamwork/` verification evidence into a SHA-256 signed OSCAL 1.1.2 JSON compliance dossier.

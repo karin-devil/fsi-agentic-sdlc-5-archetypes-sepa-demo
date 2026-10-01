@@ -2,9 +2,9 @@
 """EuroBank AG (Tier-1 Regulated FSI) × Google Cloud — 5 Agent Archetypes & /teamwork-preview Live Demo Workbench.
 
 Provides a fast interactive Web UI and live execution endpoints in Karina's Argolis project
-(`zt-lab-core-krepetz`, `europe-west3`) for demonstrating:
+(`your-gcp-project-id`, `europe-west3`) for demonstrating:
 1. The 5 EuroBank Agent Archetypes (.agents/agents/*.md & 5-part handoffs)
-2. The 20-Minute 5-Act /teamwork-preview AppRaMo 2030 SEPA Instant Modernization Demo
+2. The 20-Minute 5-Act /teamwork-preview CoreMod 2030 SEPA Instant Modernization Demo
 3. The Lane 1 PreToolUse PII/IBAN Guardrail Hook & Live SEPA Instant Validator Playground
 4. The 3 Persona Workflows (Engineer, 1,500 POs/Test Analysts, OneCI) & DASY OSCAL Dossier
 """
@@ -36,11 +36,11 @@ def _read_rel(rel_path: str) -> str:
 @app.get("/api/state")
 async def get_state() -> JSONResponse:
     archetype_files = [
-        ("coba-01-sentinel-spec-refiner", "Archetype 1: Sentinel & 5-Stage Spec Refiner", "Act 1 / Persona 1 (PO & Engineer)", ".agents/agents/coba-01-sentinel-spec-refiner.md", ".agents/teamwork/handoffs/01_sentinel_handoff.md"),
-        ("coba-02-explorer-doku-miner", "Archetype 2: Explorer, Spec Miner & Spanner Graph Doku Agent", "Act 2 / 10M-LoC Spanner Graph MCP", ".agents/agents/coba-02-explorer-doku-miner.md", ".agents/teamwork/handoffs/02_explorer_doku_handoff.md"),
-        ("coba-03-opaque-e2e-test-architect", "Archetype 3: Opaque-Box 5-Tier E2E Test Architect & BDD Synthesizer", "Act 3 (Track 2) / Persona 2 (1,500 Test Analysts)", ".agents/agents/coba-03-opaque-e2e-test-architect.md", ".agents/teamwork/handoffs/03_opaque_test_architect_handoff.md"),
-        ("coba-04-armed-codmod-worker", "Archetype 4: Armed Modernization Worker (CodMod Java 21 Engineer)", "Act 3 (Track 1) / Exclusive Write-Owner", ".agents/agents/coba-04-armed-codmod-worker.md", ".agents/teamwork/handoffs/04_armed_codmod_worker_handoff.md"),
-        ("coba-05-forensic-auditor-dasy-gate", "Archetype 5: 6-Eyes Reviewer, Challenger, Forensic Auditor & DASY Gate", "Act 4 & 5 / Persona 3 (OneCI & Enterprise DASY)", ".agents/agents/coba-05-forensic-auditor-dasy-gate.md", ".agents/teamwork/handoffs/05_forensic_auditor_handoff.md"),
+        ("fsi-01-sentinel-spec-refiner", "Archetype 1: Sentinel & 5-Stage Spec Refiner", "Act 1 / Persona 1 (PO & Engineer)", ".agents/agents/fsi-01-sentinel-spec-refiner.md", ".agents/teamwork/handoffs/01_sentinel_handoff.md"),
+        ("fsi-02-explorer-doku-miner", "Archetype 2: Explorer, Spec Miner & Spanner Graph Doku Agent", "Act 2 / 10M-LoC Spanner Graph MCP", ".agents/agents/fsi-02-explorer-doku-miner.md", ".agents/teamwork/handoffs/02_explorer_doku_handoff.md"),
+        ("fsi-03-opaque-e2e-test-architect", "Archetype 3: Opaque-Box 5-Tier E2E Test Architect & BDD Synthesizer", "Act 3 (Track 2) / Persona 2 (1,500 Test Analysts)", ".agents/agents/fsi-03-opaque-e2e-test-architect.md", ".agents/teamwork/handoffs/03_opaque_test_architect_handoff.md"),
+        ("fsi-04-armed-codmod-worker", "Archetype 4: Armed Modernization Worker (CodMod Java 21 Engineer)", "Act 3 (Track 1) / Exclusive Write-Owner", ".agents/agents/fsi-04-armed-codmod-worker.md", ".agents/teamwork/handoffs/04_armed_codmod_worker_handoff.md"),
+        ("fsi-05-forensic-auditor-dasy-gate", "Archetype 5: 6-Eyes Reviewer, Challenger, Forensic Auditor & DASY Gate", "Act 4 & 5 / Persona 3 (OneCI & Enterprise DASY)", ".agents/agents/fsi-05-forensic-auditor-dasy-gate.md", ".agents/teamwork/handoffs/05_forensic_auditor_handoff.md"),
     ]
     archetypes = [
         {
@@ -63,21 +63,21 @@ async def get_state() -> JSONResponse:
         "TEST_READY.md": _read_rel(".agents/teamwork/TEST_READY.md"),
         "trace_sepa_instant_cutoff.xslt": _read_rel("legacy/trace_sepa_instant_cutoff.xslt"),
         "secoffice_limit_check.apt": _read_rel("legacy/secoffice_limit_check.apt"),
-        "SepaInstantValidator.java": _read_rel("src/main/java/com/coba/payments/SepaInstantValidator.java"),
-        "SepaInstantValidatorTest.java": _read_rel("src/test/java/com/coba/payments/SepaInstantValidatorTest.java"),
+        "SepaInstantValidator.java": _read_rel("src/main/java/com/fsi/payments/SepaInstantValidator.java"),
+        "SepaInstantValidatorTest.java": _read_rel("src/test/java/com/fsi/payments/SepaInstantValidatorTest.java"),
         "sepa_instant_cutoff.feature": _read_rel("src/test/resources/features/sepa_instant_cutoff.feature"),
-        "coba_java21_bafin_rules.md": _read_rel(".agents/rules/coba_java21_bafin_rules.md"),
+        "fsi_java21_bafin_rules.md": _read_rel(".agents/rules/fsi_java21_bafin_rules.md"),
         "living_architecture_sepa.md": _read_rel("docs/living_architecture_sepa.md"),
         "Antigravity-Business.code-profile": _read_rel("profiles/Antigravity-Business.code-profile"),
         "dasy_compliance_dossier.json": _read_rel("build/dasy_compliance_dossier.json"),
     }
 
     return JSONResponse({
-        "project": os.environ.get("GOOGLE_CLOUD_PROJECT", "zt-lab-core-krepetz"),
+        "project": os.environ.get("GOOGLE_CLOUD_PROJECT", "your-gcp-project-id"),
         "region": "europe-west3 (Frankfurt)",
         "adk_orchestrator_url": os.environ.get(
             "ADK_ORCHESTRATOR_URL",
-            "https://coba-adk-orchestrator-310140881205.europe-west3.run.app/dev-ui/",
+            "https://fsi-adk-orchestrator.europe-west3.run.app/dev-ui/",
         ),
         "archetypes": archetypes,
         "artifacts": artifacts,
@@ -87,7 +87,7 @@ async def get_state() -> JSONResponse:
 @app.post("/api/run-demo")
 async def run_demo() -> JSONResponse:
     res = subprocess.run(
-        ["bash", str(DEMO_REPO / "run_all_coba_demos.sh")],
+        ["bash", str(DEMO_REPO / "run_all_fsi_demos.sh")],
         cwd=str(DEMO_REPO),
         capture_output=True,
         text=True,
@@ -130,8 +130,8 @@ async def validate_sepa(req: Request) -> JSONResponse:
         amount_eur=str(body.get("amount_eur", "2500.00")),
         liquidity_eur=str(body.get("liquidity_eur", "150000.00")),
         elapsed_ms=int(body.get("elapsed_ms", 420)),
-        debtor_iban=str(body.get("debtor_iban", "DE89370400440532013000")),
-        debtor_bic=str(body.get("debtor_bic", "COBADEFFXXX")),
+        debtor_iban=str(body.get("debtor_iban", "DE89500105170532013000")),
+        debtor_bic=str(body.get("debtor_bic", "EUBKDEFFXXX")),
         creditor_bic=str(body.get("creditor_bic", "DEUTDEFFXXX")),
         account_status=str(body.get("account_status", "ACTIVE")),
         aml_status=str(body.get("aml_status", "CLEAR")),
@@ -147,9 +147,9 @@ HTML_PAGE = """<!DOCTYPE html>
 <title>EuroBank AG (Tier-1 Regulated FSI) × Google Cloud — 5 Agent Archetypes & /teamwork-preview Live Demo Hub</title>
 <style>
   :root {
-    --coba-yellow: #FFCC00;
-    --coba-petrol: #002E3C;
-    --coba-petrol-light: #004154;
+    --fsi-yellow: #FFCC00;
+    --fsi-petrol: #002E3C;
+    --fsi-petrol-light: #004154;
     --bg: #07131a;
     --card: #0d212c;
     --border: #1b3d4f;
@@ -168,8 +168,8 @@ HTML_PAGE = """<!DOCTYPE html>
     line-height: 1.5;
   }
   header {
-    background: linear-gradient(135deg, var(--coba-petrol) 0%, #051821 100%);
-    border-bottom: 3px solid var(--coba-yellow);
+    background: linear-gradient(135deg, var(--fsi-petrol) 0%, #051821 100%);
+    border-bottom: 3px solid var(--fsi-yellow);
     padding: 18px 28px;
     display: flex;
     justify-content: space-between;
@@ -184,7 +184,7 @@ HTML_PAGE = """<!DOCTYPE html>
   }
   .brand-sub {
     font-size: 0.85rem;
-    color: var(--coba-yellow);
+    color: var(--fsi-yellow);
     margin-top: 2px;
   }
   .header-actions {
@@ -194,7 +194,7 @@ HTML_PAGE = """<!DOCTYPE html>
     flex-wrap: wrap;
   }
   .btn {
-    background: var(--coba-yellow);
+    background: var(--fsi-yellow);
     color: #00202b;
     border: none;
     padding: 9px 16px;
@@ -233,7 +233,7 @@ HTML_PAGE = """<!DOCTYPE html>
   }
   .tab.active {
     background: var(--card);
-    color: var(--coba-yellow);
+    color: var(--fsi-yellow);
     border-color: var(--border);
   }
   main {
@@ -258,8 +258,8 @@ HTML_PAGE = """<!DOCTYPE html>
     transition: all 0.15s;
   }
   .arch-card.active, .arch-card:hover {
-    border-color: var(--coba-yellow);
-    box-shadow: 0 0 0 1px var(--coba-yellow);
+    border-color: var(--fsi-yellow);
+    box-shadow: 0 0 0 1px var(--fsi-yellow);
   }
   .badge {
     display: inline-block;
@@ -268,7 +268,7 @@ HTML_PAGE = """<!DOCTYPE html>
     font-size: 0.72rem;
     font-weight: 700;
     background: rgba(255,204,0,0.15);
-    color: var(--coba-yellow);
+    color: var(--fsi-yellow);
     margin-bottom: 6px;
   }
   .split {
@@ -286,7 +286,7 @@ HTML_PAGE = """<!DOCTYPE html>
   .box h3 {
     margin: 0 0 10px 0;
     font-size: 1rem;
-    color: var(--coba-yellow);
+    color: var(--fsi-yellow);
   }
   pre {
     background: #040d12;
@@ -332,11 +332,11 @@ HTML_PAGE = """<!DOCTYPE html>
 <header>
   <div>
     <div class="brand-title">EuroBank AG (Tier-1 Regulated FSI) × Google Cloud — 5 Agent Archetypes &amp; /teamwork-preview Live Workbench</div>
-    <div class="brand-sub">Argolis Project: zt-lab-core-krepetz (europe-west3 Frankfurt) | Dual-Lane AGY Architecture + AppRaMo 2030 SEPA Instant Modernization</div>
+    <div class="brand-sub">Argolis Project: your-gcp-project-id (europe-west3 Frankfurt) | Dual-Lane AGY Architecture + CoreMod 2030 SEPA Instant Modernization</div>
   </div>
   <div class="header-actions">
     <button class="btn" onclick="executeFullDemo()">▶ Run All 5 Acts &amp; 5-Tier JVM Suite Live</button>
-    <a id="adkLink" href="https://coba-adk-orchestrator-310140881205.europe-west3.run.app/dev-ui/" target="_blank" class="btn btn-secondary">🤖 Open Google ADK 2.0 Multi-Agent UI (/dev-ui/) ↗</a>
+    <a id="adkLink" href="https://fsi-adk-orchestrator.europe-west3.run.app/dev-ui/" target="_blank" class="btn btn-secondary">🤖 Open Google ADK 2.0 Multi-Agent UI (/dev-ui/) ↗</a>
   </div>
 </header>
 
@@ -383,7 +383,7 @@ HTML_PAGE = """<!DOCTYPE html>
         <pre id="artViewerPre">Select an Act artifact above...</pre>
       </div>
       <div class="box">
-        <h3>Live Argolis Execution Output (`run_all_coba_demos.sh` &amp; OpenJDK 21 JVM)</h3>
+        <h3>Live Argolis Execution Output (`run_all_fsi_demos.sh` &amp; OpenJDK 21 JVM)</h3>
         <pre id="liveRunPre">Click "▶ Execute Live 5-Tier & JVM Verification Now" to run all 5 Acts live on Cloud Run...</pre>
       </div>
     </div>
@@ -393,13 +393,13 @@ HTML_PAGE = """<!DOCTYPE html>
   <section id="tab-playground" class="panel">
     <div class="split">
       <div class="box">
-        <h3>🛡️ Lane 1 PreToolUse PII / IBAN / .coba Guardrail Tester (`.agents/hooks/lane1_pii_iban_guard.py`)</h3>
+        <h3>🛡️ Lane 1 PreToolUse PII / IBAN / .fsi Guardrail Tester (`.agents/hooks/lane1_pii_iban_guard.py`)</h3>
         <div class="pill-bar">
-          <button class="btn btn-secondary" onclick="setHookInput('Query oracle.intranet.coba for customer IBAN DE44500105175407324931')">Preset 1: Real IBAN + .intranet.coba (MUST DENY)</button>
-          <button class="btn btn-secondary" onclick="setHookInput('Validate synthetic SEPA Instant IBAN DE89370400440532013000')">Preset 2: Bundesbank Synthetic IBAN (MUST ALLOW)</button>
+          <button class="btn btn-secondary" onclick="setHookInput('Query oracle.intranet.fsi for customer IBAN DE44500105175407324931')">Preset 1: Real IBAN + .intranet.fsi (MUST DENY)</button>
+          <button class="btn btn-secondary" onclick="setHookInput('Validate synthetic SEPA Instant IBAN DE89500105170532013000')">Preset 2: Bundesbank Synthetic IBAN (MUST ALLOW)</button>
         </div>
         <label>Prompt / Tool Payload to Evaluate</label>
-        <input id="hookInput" value="Query oracle.intranet.coba for customer IBAN DE44500105175407324931" style="margin-bottom:10px;">
+        <input id="hookInput" value="Query oracle.intranet.fsi for customer IBAN DE44500105175407324931" style="margin-bottom:10px;">
         <button class="btn" onclick="runHookTest()">Evaluate Lane 1 Hook Now</button>
         <pre id="hookResultPre" style="margin-top:12px;">Click "Evaluate Lane 1 Hook Now"...</pre>
       </div>
@@ -407,10 +407,10 @@ HTML_PAGE = """<!DOCTYPE html>
       <div class="box">
         <h3>💶 Live Java 21 SEPA Instant (`pacs.008.001.08`) Boundary &amp; HALF_EVEN Validator</h3>
         <div class="pill-bar">
-          <button class="btn btn-secondary" onclick="setSepaPreset('100000.00', 10000, 'COBADEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'CLEAR', '150000.00')">Boundary: €100,000.00 @ 10,000ms (ACCP)</button>
-          <button class="btn btn-secondary" onclick="setSepaPreset('100000.01', 1200, 'COBADEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'CLEAR', '200000.00')">+1 Cent: €100,000.01 (AM02)</button>
-          <button class="btn btn-secondary" onclick="setSepaPreset('5000.00', 10001, 'COBADEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'CLEAR', '50000.00')">+1 ms: 10,001ms (AB05)</button>
-          <button class="btn btn-secondary" onclick="setSepaPreset('15000.00', 400, 'COBADEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'FREEZE', '50000.00')">BaFin AML Freeze (RR04)</button>
+          <button class="btn btn-secondary" onclick="setSepaPreset('100000.00', 10000, 'EUBKDEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'CLEAR', '150000.00')">Boundary: €100,000.00 @ 10,000ms (ACCP)</button>
+          <button class="btn btn-secondary" onclick="setSepaPreset('100000.01', 1200, 'EUBKDEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'CLEAR', '200000.00')">+1 Cent: €100,000.01 (AM02)</button>
+          <button class="btn btn-secondary" onclick="setSepaPreset('5000.00', 10001, 'EUBKDEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'CLEAR', '50000.00')">+1 ms: 10,001ms (AB05)</button>
+          <button class="btn btn-secondary" onclick="setSepaPreset('15000.00', 400, 'EUBKDEFFXXX', 'DEUTDEFFXXX', 'ACTIVE', 'FREEZE', '50000.00')">BaFin AML Freeze (RR04)</button>
         </div>
         <div class="form-row">
           <div><label>Amount (EUR)</label><input id="sepaAmt" value="100000.00"></div>
@@ -432,7 +432,7 @@ HTML_PAGE = """<!DOCTYPE html>
       <button class="btn btn-secondary" onclick="showPersonaDoc('sepa_instant_cutoff.feature')">Persona 2 (1,500 Test Analysts): Cucumber BDD (.feature)</button>
       <button class="btn btn-secondary" onclick="showPersonaDoc('Antigravity-Business.code-profile')">Persona 2: CAPCom VDI Profile (.code-profile)</button>
       <button class="btn btn-secondary" onclick="showPersonaDoc('living_architecture_sepa.md')">Persona 1: Spanner Graph Doku Agent C4 Output</button>
-      <button class="btn btn-secondary" onclick="showPersonaDoc('coba_java21_bafin_rules.md')">Engineering Rules: coba_java21_bafin_rules.md</button>
+      <button class="btn btn-secondary" onclick="showPersonaDoc('fsi_java21_bafin_rules.md')">Engineering Rules: fsi_java21_bafin_rules.md</button>
     </div>
     <div class="split">
       <div class="box">
@@ -478,7 +478,7 @@ function showPersonaDoc(name) {
 
 async function executeFullDemo() {
   const pre = document.getElementById('liveRunPre');
-  pre.textContent = 'Running run_all_coba_demos.sh (5 Agent Archetypes + 5-Tier JVM Suite + DASY OSCAL Exporter)...';
+  pre.textContent = 'Running run_all_fsi_demos.sh (5 Agent Archetypes + 5-Tier JVM Suite + DASY OSCAL Exporter)...';
   const res = await fetch('/api/run-demo', {method: 'POST'});
   const data = await res.json();
   pre.textContent = data.output;

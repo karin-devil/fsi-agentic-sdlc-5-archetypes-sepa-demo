@@ -1,11 +1,11 @@
-package com.coba.payments;
+package com.fsi.payments;
 
 import java.math.BigDecimal;
-import com.coba.payments.SepaInstantValidator.PaymentRequest;
-import com.coba.payments.SepaInstantValidator.ValidationResult;
+import com.fsi.payments.SepaInstantValidator.PaymentRequest;
+import com.fsi.payments.SepaInstantValidator.ValidationResult;
 
 /**
- * Track 2 Opaque-Box 5-Tier E2E Verification Test Suite ({@code coba-03-opaque-e2e-test-architect}).
+ * Track 2 Opaque-Box 5-Tier E2E Verification Test Suite ({@code fsi-03-opaque-e2e-test-architect}).
  *
  * <p>Derived strictly from {@code .agents/teamwork/ORIGINAL_REQUEST.md} and
  * {@code .agents/teamwork/PROJECT.md § Feature Inventory} without reading implementation internals.
@@ -22,8 +22,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("2500.00"),
                 new BigDecimal("50000.00"),
                 420L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -36,8 +36,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("100000.00"),
                 new BigDecimal("100000.00"),
                 10_000L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -50,8 +50,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("100000.01"),
                 new BigDecimal("200000.00"),
                 1200L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -64,8 +64,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("5000.00"),
                 new BigDecimal("50000.00"),
                 10_001L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -78,8 +78,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("10.00"),
                 new BigDecimal("50000.00"),
                 300L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "XX00DEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -93,7 +93,7 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("50000.00"),
                 500L,
                 "DE00999999990000000000",
-                "COBADEFFXXX",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "FREEZE"));
@@ -106,8 +106,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("8000.00"),
                 new BigDecimal("50000.00"),
                 450L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "CLOSED",
                 "CLEAR"));
@@ -120,8 +120,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("8000.00"),
                 new BigDecimal("7999.99"),
                 450L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -134,8 +134,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("0.00"),
                 new BigDecimal("50000.00"),
                 100L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -148,8 +148,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("50.025"),
                 new BigDecimal("1000.00"),
                 100L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));
@@ -161,8 +161,8 @@ public final class SepaInstantValidatorTest {
                 new BigDecimal("50.035"),
                 new BigDecimal("1000.00"),
                 100L,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR"));

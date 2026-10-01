@@ -2,7 +2,7 @@
 -- EuroBank Enterprise Knowledge Graph on Cloud Spanner Graph
 -- Reference: agentic-sdlc-workflows
 -- Deck: Agentic SDLC Offering - V1.0
--- Database URI: projects/coba-sdlc-yellow-prod/instances/coba-adlc-kg/databases/enterprise_knowledge_graph
+-- Database URI: projects/fsi-sdlc-yellow-prod/instances/fsi-adlc-kg/databases/enterprise_knowledge_graph
 -- ============================================================================
 
 CREATE PROPERTY GRAPH IF NOT EXISTS EuroBankEnterpriseSDLCGraph
@@ -40,7 +40,7 @@ CREATE PROPERTY GRAPH IF NOT EXISTS EuroBankEnterpriseSDLCGraph
 -- Replaces 45+ minutes of manual/agent grep/glob across ~10M LoC with a 180ms query
 -- ============================================================================
 GRAPH EuroBankEnterpriseSDLCGraph
-MATCH (story:RequirementStory {plm_jira_key: 'APPRAMO-4821'})
+MATCH (story:RequirementStory {plm_jira_key: 'COREMOD-4821'})
       -[:IMPLEMENTS_STORY]->(entry:CodeArtifact)
       -[:DEPENDS_ON]->{1,4}(downstream:CodeArtifact)
 OPTIONAL MATCH (downstream)-[:ACCESSES_DATA]->(db:DatabaseEntity)
@@ -60,7 +60,7 @@ RETURN
 -- Query 2: Doku Agent PoC — Living Documentation & Ontology Extraction Query
 -- ============================================================================
 GRAPH EuroBankEnterpriseSDLCGraph
-MATCH (c:CodeArtifact {repo_name: 'coba-sepa-payments-core'})
+MATCH (c:CodeArtifact {repo_name: 'fsi-sepa-payments-core'})
       -[dep:DEPENDS_ON]->(target:CodeArtifact)
 OPTIONAL MATCH (c)-[:GOVERNED_BY]->(doc:ComplianceDocument)
 RETURN

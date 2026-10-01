@@ -20,8 +20,8 @@ import subprocess
 import sys
 
 REPO_ROOT = Path(__file__).resolve().parent
-JAVA_MAIN = REPO_ROOT / "src" / "main" / "java" / "com" / "coba" / "payments" / "SepaInstantValidator.java"
-JAVA_TEST = REPO_ROOT / "src" / "test" / "java" / "com" / "coba" / "payments" / "SepaInstantValidatorTest.java"
+JAVA_MAIN = REPO_ROOT / "src" / "main" / "java" / "com" / "fsi" / "payments" / "SepaInstantValidator.java"
+JAVA_TEST = REPO_ROOT / "src" / "test" / "java" / "com" / "fsi" / "payments" / "SepaInstantValidatorTest.java"
 FEATURE_FILE = REPO_ROOT / "src" / "test" / "resources" / "features" / "sepa_instant_cutoff.feature"
 HOOK_SCRIPT = REPO_ROOT / ".agents" / "hooks" / "lane1_pii_iban_guard.py"
 
@@ -81,15 +81,15 @@ def run_tier_1() -> list[str]:
 def run_tier_2_and_3() -> list[str]:
     checks = []
     # Boundary checks
-    r_exact = reference_validate("100000.00", "150000.00", 10000, "DE89370400440532013000", "COBADEFFXXX", "DEUTDEFFXXX", "ACTIVE", "CLEAR")
+    r_exact = reference_validate("100000.00", "150000.00", 10000, "DE89500105170532013000", "EUBKDEFFXXX", "DEUTDEFFXXX", "ACTIVE", "CLEAR")
     assert r_exact["accepted"] is True and r_exact["iso_reason"] == "ACCP"
     checks.append("Boundary EUR 100,000.00 @ 10,000ms -> ACCEPTED (ACCP)")
 
-    r_cent_over = reference_validate("100000.01", "200000.00", 1200, "DE89370400440532013000", "COBADEFFXXX", "DEUTDEFFXXX", "ACTIVE", "CLEAR")
+    r_cent_over = reference_validate("100000.01", "200000.00", 1200, "DE89500105170532013000", "EUBKDEFFXXX", "DEUTDEFFXXX", "ACTIVE", "CLEAR")
     assert r_cent_over["accepted"] is False and r_cent_over["iso_reason"] == "AM02"
     checks.append("Boundary EUR 100,000.01 (+1 cent) -> REJECTED (AM02 / SECOFFICE_LIMIT_EXCEEDED_100K)")
 
-    r_ms_over = reference_validate("5000.00", "50000.00", 10001, "DE89370400440532013000", "COBADEFFXXX", "DEUTDEFFXXX", "ACTIVE", "CLEAR")
+    r_ms_over = reference_validate("5000.00", "50000.00", 10001, "DE89500105170532013000", "EUBKDEFFXXX", "DEUTDEFFXXX", "ACTIVE", "CLEAR")
     assert r_ms_over["accepted"] is False and r_ms_over["iso_reason"] == "AB05"
     checks.append("Boundary 10,001ms (+1 ms) -> REJECTED (AB05 / SCT_INST_TIMEOUT_10S)")
 
@@ -124,9 +124,9 @@ def run_tier_4_bdd() -> list[str]:
 
 def run_tier_5_whitebox_and_jvm() -> list[str]:
     checks = []
-    # 1. Verify Lane 1 PreToolUse Hook blocks real IBAN & .coba host and allows synthetic IBAN
+    # 1. Verify Lane 1 PreToolUse Hook blocks real IBAN & .fsi host and allows synthetic IBAN
     allow_proc = subprocess.run(
-        [sys.executable, str(HOOK_SCRIPT), "--input-text", "Test with synthetic IBAN DE89370400440532013000"],
+        [sys.executable, str(HOOK_SCRIPT), "--input-text", "Test with synthetic IBAN DE89500105170532013000"],
         capture_output=True,
         text=True,
         check=False,
@@ -134,13 +134,13 @@ def run_tier_5_whitebox_and_jvm() -> list[str]:
     assert allow_proc.returncode == 0 and json.loads(allow_proc.stdout)["decision"] == "allow"
 
     deny_proc = subprocess.run(
-        [sys.executable, str(HOOK_SCRIPT), "--input-text", "Connect to oracle.intranet.coba with real IBAN DE44500105175407324931"],
+        [sys.executable, str(HOOK_SCRIPT), "--input-text", "Connect to oracle.intranet.fsi with real IBAN DE44500105175407324931"],
         capture_output=True,
         text=True,
         check=False,
     )
     assert deny_proc.returncode == 2 and json.loads(deny_proc.stdout)["decision"] == "deny"
-    checks.append("Lane 1 PreToolUse PII/IBAN Guardrail verified (synthetic allowed; real IBAN + .intranet.coba blocked with exit code 2)")
+    checks.append("Lane 1 PreToolUse PII/IBAN Guardrail verified (synthetic allowed; real IBAN + .intranet.fsi blocked with exit code 2)")
 
     # 2. 100 concurrent worker executions
     with ThreadPoolExecutor(max_workers=16) as pool:
@@ -150,8 +150,8 @@ def run_tier_5_whitebox_and_jvm() -> list[str]:
                 "2500.00" if i % 2 == 0 else "100000.01",
                 "150000.00",
                 500,
-                "DE89370400440532013000",
-                "COBADEFFXXX",
+                "DE89500105170532013000",
+                "EUBKDEFFXXX",
                 "DEUTDEFFXXX",
                 "ACTIVE",
                 "CLEAR",
@@ -173,13 +173,13 @@ def run_tier_5_whitebox_and_jvm() -> list[str]:
             text=True,
         )
         jvm_main = subprocess.run(
-            ["java", "-cp", str(classes_dir), "com.coba.payments.SepaInstantValidator"],
+            ["java", "-cp", str(classes_dir), "com.fsi.payments.SepaInstantValidator"],
             check=True,
             capture_output=True,
             text=True,
         )
         jvm_test = subprocess.run(
-            ["java", "-cp", str(classes_dir), "com.coba.payments.SepaInstantValidatorTest"],
+            ["java", "-cp", str(classes_dir), "com.fsi.payments.SepaInstantValidatorTest"],
             check=True,
             capture_output=True,
             text=True,
@@ -194,7 +194,7 @@ def run_tier_5_whitebox_and_jvm() -> list[str]:
 
 def main() -> int:
     print("================================================================================")
-    print(" EUROBANK AG — 5-TIER VERIFICATION & FORENSIC AUDIT SUITE (APPRAMO-4821)")
+    print(" EUROBANK AG — 5-TIER VERIFICATION & FORENSIC AUDIT SUITE (COREMOD-4821)")
     print("================================================================================")
     tiers = [
         ("TIER 1: Static Contract & Forensic Anti-Pattern Scan", run_tier_1),

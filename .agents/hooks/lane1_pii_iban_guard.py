@@ -2,7 +2,7 @@
 """EuroBank Lane 1 (Consumer-Speed Sandbox) Deterministic PreToolUse & Prompt Guardrail.
 
 Blocks any prompt or tool call in Lane 1 that contains:
-1. Internal EuroBank Zone 2/3 hostnames or domains (*.intranet.coba, *.prod.eurobank.example)
+1. Internal EuroBank Zone 2/3 hostnames or domains (*.intranet.fsi, *.prod.eurobank.example)
 2. Real/unapproved German IBANs (DE followed by 20 digits) outside the approved synthetic test allowlist
 3. Private keys, JDBC production credentials, or bearer tokens.
 
@@ -20,14 +20,14 @@ import time
 
 # Approved synthetic IBANs for clean-room Lane 1 testing (ECB / Bundesbank test vectors)
 APPROVED_SYNTHETIC_IBANS = frozenset({
-    "DE89370400440532013000",  # Standard Bundesbank synthetic test IBAN (Debtor)
+    "DE89500105170532013000",  # Standard Bundesbank synthetic test IBAN (Debtor)
     "DE12500105170648489890",  # Standard synthetic test IBAN (Creditor)
     "DE00999999990000000000",  # Synthetic BaFin AML freeze sentinel IBAN
 })
 
 IBAN_REGEX = re.compile(r"\bDE\d{20}\b")
 INTERNAL_HOST_REGEX = re.compile(
-    r"\b(?:[a-zA-Z0-9_-]+\.)+(?:intranet\.coba|prod\.eurobank\.de|zone3\.coba\.internal)\b",
+    r"\b(?:[a-zA-Z0-9_-]+\.)+(?:intranet\.fsi|prod\.eurobank\.de|zone3\.fsi\.internal)\b",
     re.IGNORECASE,
 )
 SECRET_REGEX = re.compile(

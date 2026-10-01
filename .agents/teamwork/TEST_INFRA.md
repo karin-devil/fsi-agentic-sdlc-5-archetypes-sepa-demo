@@ -1,6 +1,6 @@
 # 5-Tier Verification Infrastructure Plan (`TEST_INFRA.md`)
 
-- **Authored By**: `coba-03-opaque-e2e-test-architect` (Archetype 3 — Opaque-Box 5-Tier E2E Test Architect & BDD Synthesizer)
+- **Authored By**: `fsi-03-opaque-e2e-test-architect` (Archetype 3 — Opaque-Box 5-Tier E2E Test Architect & BDD Synthesizer)
 - **Cognitive Isolation Attestation**: Authored strictly from `ORIGINAL_REQUEST.md` and `PROJECT.md § Feature Inventory` with zero reads of `src/main/java/`.
 
 ## Verification Tiers

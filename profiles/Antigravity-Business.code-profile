@@ -4,13 +4,13 @@
   "targetAudience": "1,500 EuroBank Product Owners, Business Analysts & Test Analysts",
   "settings": {
     "antigravity.ui.mode": "business-analyst",
-    "antigravity.agent.defaultPersona": "coba-01-sentinel-spec-refiner",
-    "antigravity.agent.secondaryPersona": "coba-03-opaque-e2e-test-architect",
+    "antigravity.agent.defaultPersona": "fsi-01-sentinel-spec-refiner",
+    "antigravity.agent.secondaryPersona": "fsi-03-opaque-e2e-test-architect",
     "antigravity.skills.pinned": [
       "/pm-grill-me",
       "/write-prd",
       "/red-team-prd",
-      "/coba-bdd-synthesizer"
+      "/fsi-bdd-synthesizer"
     ],
     "workbench.activityBar.visible": true,
     "git.decorations.enabled": false,

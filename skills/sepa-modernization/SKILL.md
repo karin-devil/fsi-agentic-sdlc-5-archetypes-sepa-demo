@@ -1,9 +1,9 @@
 ---
 name: sepa-modernization
-description: "AppRaMo 2030 Legacy Modernization Skill: Guides translation of TRACE XML/XSLT stylesheets and SecOffice Gupta Team Developer (.apt) 4GL modules into high-assurance Java 21 / Spring Boot 3.4 microservices."
+description: "CoreMod 2030 Legacy Modernization Skill: Guides translation of TRACE XML/XSLT stylesheets and SecOffice Gupta Team Developer (.apt) 4GL modules into high-assurance Java 21 / Spring Boot 3.4 microservices."
 ---
 
-# AppRaMo 2030 SEPA Instant Modernization Skill (`sepa-modernization`)
+# CoreMod 2030 SEPA Instant Modernization Skill (`sepa-modernization`)
 
 ## Overview
 Standardizes the migration of EuroBank's legacy payment and settlement components (`TRACE` XSLT 1.0/2.0 stylesheets and `SecOffice` Gupta Team Developer `.apt` 4GL routines) into Java 21 (`SepaInstantValidator.java`).

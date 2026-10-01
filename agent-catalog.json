@@ -28,37 +28,37 @@
   ],
   "agentArchetypes": [
     {
-      "id": "coba-01-sentinel-spec-refiner",
+      "id": "fsi-01-sentinel-spec-refiner",
       "name": "Archetype 1: Sentinel & 5-Stage Spec Refiner",
-      "path": "agents/coba-01-sentinel-spec-refiner.md",
+      "path": "agents/fsi-01-sentinel-spec-refiner.md",
       "goal": "Captures immutable ORIGINAL_REQUEST.md to prevent silent scope reduction and runs Socratic requirement interrogation (/pm-grill-me -> /write-prd -> /red-team-prd -> /decompose-epic).",
       "outputs": [".agents/teamwork/ORIGINAL_REQUEST.md", ".agents/teamwork/handoffs/01_sentinel_handoff.md"]
     },
     {
-      "id": "coba-02-explorer-doku-miner",
+      "id": "fsi-02-explorer-doku-miner",
       "name": "Archetype 2: Explorer, Legacy Spec Miner & Spanner Graph Doku Agent",
-      "path": "agents/coba-02-explorer-doku-miner.md",
+      "path": "agents/fsi-02-explorer-doku-miner.md",
       "goal": "Queries 10M-LoC Cloud Spanner Graph via MCP in ~180ms and mines legacy TRACE XSLT and SecOffice GuptaTD 4GL business rules into PROJECT.md Feature Inventory and living C4/Arc42 documentation.",
       "outputs": [".agents/teamwork/PROJECT.md", "docs/living_architecture_sepa.md", ".agents/teamwork/handoffs/02_explorer_doku_handoff.md"]
     },
     {
-      "id": "coba-03-opaque-e2e-test-architect",
+      "id": "fsi-03-opaque-e2e-test-architect",
       "name": "Archetype 3: Track 2 Opaque-Box 5-Tier E2E Test Architect & BDD Synthesizer",
-      "path": "agents/coba-03-opaque-e2e-test-architect.md",
+      "path": "agents/fsi-03-opaque-e2e-test-architect.md",
       "goal": "Enforces cognitive isolation by writing 5-Tier JVM tests and Cucumber/Gherkin BDD scenarios for 1,500+ POs & Test Analysts strictly from ORIGINAL_REQUEST.md without reading src/main/java/.",
-      "outputs": [".agents/teamwork/TEST_INFRA.md", "src/test/java/com/coba/payments/SepaInstantValidatorTest.java", "src/test/resources/features/sepa_instant_cutoff.feature"]
+      "outputs": [".agents/teamwork/TEST_INFRA.md", "src/test/java/com/fsi/payments/SepaInstantValidatorTest.java", "src/test/resources/features/sepa_instant_cutoff.feature"]
     },
     {
-      "id": "coba-04-armed-codmod-worker",
+      "id": "fsi-04-armed-codmod-worker",
       "name": "Archetype 4: Track 1 Armed Modernization Worker (CodMod Java 21 Engineer)",
-      "path": "agents/coba-04-armed-codmod-worker.md",
+      "path": "agents/fsi-04-armed-codmod-worker.md",
       "goal": "Acts as exclusive production code write-owner inside gVisor (runsc), translating legacy XSLT and GuptaTD 4GL into Java 21 records using BigDecimal RoundingMode.HALF_EVEN.",
-      "outputs": ["src/main/java/com/coba/payments/SepaInstantValidator.java", ".agents/teamwork/handoffs/04_armed_codmod_worker_handoff.md"]
+      "outputs": ["src/main/java/com/fsi/payments/SepaInstantValidator.java", ".agents/teamwork/handoffs/04_armed_codmod_worker_handoff.md"]
     },
     {
-      "id": "coba-05-forensic-auditor-dasy-gate",
+      "id": "fsi-05-forensic-auditor-dasy-gate",
       "name": "Archetype 5: 6-Eyes Reviewer, Empirical Challenger, Forensic Auditor & DASY OSCAL Gate",
-      "path": "agents/coba-05-forensic-auditor-dasy-gate.md",
+      "path": "agents/fsi-05-forensic-auditor-dasy-gate.md",
       "goal": "Enforces the 6-Eyes Principle and non-skippable Forensic Auditor hard binary veto against mocks/scope reduction, executes Tier 5 adversarial boundary tests, and exports a SHA-256 signed NIST OSCAL 1.1.2 compliance dossier.",
       "outputs": [".agents/teamwork/GATE_STATUS.md", ".agents/teamwork/DEAD_ENDS.md", ".agents/teamwork/TEST_READY.md", "build/dasy_compliance_dossier.json"]
     }
@@ -75,9 +75,9 @@
       "goal": "Standardizes migration of legacy XML/XSLT and GuptaTD 4GL modules into Java 21."
     },
     {
-      "id": "coba-bdd-synthesizer",
-      "path": "skills/coba-bdd-synthesizer/SKILL.md",
-      "executable": ".agents/skills/coba-bdd-synthesizer/synthesize_bdd_suite.py",
+      "id": "fsi-bdd-synthesizer",
+      "path": "skills/fsi-bdd-synthesizer/SKILL.md",
+      "executable": ".agents/skills/fsi-bdd-synthesizer/synthesize_bdd_suite.py",
       "goal": "Empowers 1,500+ non-coding POs and Test Analysts to synthesize Cucumber/Gherkin .feature files and synthetic ISO-20022 test payloads."
     },
     {
@@ -96,7 +96,7 @@
     }
   ],
   "entrypoints": {
-    "runAllDemos": "bash run_all_coba_demos.sh",
+    "runAllDemos": "bash run_all_fsi_demos.sh",
     "verify5Tiers": "python3 verify_5_tiers.py",
     "headlessCiGate": "bash ci/oneci_headless_gate.sh",
     "workbenchServer": "python3 workbench/app.py"

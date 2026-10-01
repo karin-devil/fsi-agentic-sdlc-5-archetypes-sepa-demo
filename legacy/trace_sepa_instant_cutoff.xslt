@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   LEGACY ARTIFACT: TRACE SEPA Instant Routing & Cutoff Transform (XSLT 1.0)
-  System: EuroBank TRACE Payment Gateway (Legacy Brownfield - AppRaMo 2030 Scope)
+  System: EuroBank TRACE Payment Gateway (Legacy Brownfield - CoreMod 2030 Scope)
   Last Modified: 2018-11-14 (Undocumented inline hotfixes)
-  Target Migration: Java 21 com.coba.payments.SepaInstantValidator (Story APPRAMO-4821)
+  Target Migration: Java 21 com.fsi.payments.SepaInstantValidator (Story COREMOD-4821)
 -->
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"

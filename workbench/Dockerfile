@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir fastapi uvicorn
 
 COPY . /app/
 
-RUN chmod +x /app/demo_repo/run_all_coba_demos.sh \
+RUN chmod +x /app/demo_repo/run_all_fsi_demos.sh \
     /app/demo_repo/ci/oneci_headless_gate.sh \
     /app/demo_repo/verify_5_tiers.py
 

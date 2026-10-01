@@ -31,8 +31,8 @@ def build_dossier(repo_root: Path) -> dict:
         teamwork_dir / "TEST_READY.md",
         repo_root / "legacy" / "trace_sepa_instant_cutoff.xslt",
         repo_root / "legacy" / "secoffice_limit_check.apt",
-        repo_root / "src" / "main" / "java" / "com" / "coba" / "payments" / "SepaInstantValidator.java",
-        repo_root / "src" / "test" / "java" / "com" / "coba" / "payments" / "SepaInstantValidatorTest.java",
+        repo_root / "src" / "main" / "java" / "com" / "fsi" / "payments" / "SepaInstantValidator.java",
+        repo_root / "src" / "test" / "java" / "com" / "fsi" / "payments" / "SepaInstantValidatorTest.java",
         repo_root / "src" / "test" / "resources" / "features" / "sepa_instant_cutoff.feature",
     ]
 
@@ -57,22 +57,22 @@ def build_dossier(repo_root: Path) -> dict:
     dossier = {
         "oscal-version": "1.1.2",
         "assessment-results": {
-            "uuid": "coba-dasy-appramo-2030-sepa-instant-0001",
+            "uuid": "fsi-dasy-coremod-2030-sepa-instant-0001",
             "metadata": {
-                "title": "EuroBank DASY Automated Governance & Compliance Dossier — AppRaMo 2030 SEPA Instant Modernization",
+                "title": "EuroBank DASY Automated Governance & Compliance Dossier — CoreMod 2030 SEPA Instant Modernization",
                 "published": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "version": "2026.09.29-v1",
                 "oscal-version": "1.1.2",
-                "TargetApplication": "AppRaMo 2030 — TRACE XSLT & SecOffice GuptaTD -> Java 21 (SepaInstantValidator)",
-                "JiraReference": "APPRAMO-4821",
+                "TargetApplication": "CoreMod 2030 — TRACE XSLT & SecOffice GuptaTD -> Java 21 (SepaInstantValidator)",
+                "JiraReference": "COREMOD-4821",
                 "GovernancePlatform": "EuroBank DASY (Governance Lead) + OneCI Quality Gate (CCoE Platform Lead)",
             },
             "six-eyes-separation-of-duties": {
-                "track_1_armed_worker": "coba-04-armed-codmod-worker (Exclusive Write-Owner on src/main/java)",
-                "track_2_opaque_test_architect": "coba-03-opaque-e2e-test-architect (Opaque-Box Test Suite from ORIGINAL_REQUEST.md)",
-                "eyes_1_2_reviewer": "coba-05-forensic-auditor-dasy-gate (Code Review Pillar)",
-                "eyes_3_4_empirical_challenger": "coba-05-forensic-auditor-dasy-gate (Adversarial Boundary Challenger)",
-                "eyes_5_6_forensic_auditor": "coba-05-forensic-auditor-dasy-gate (Non-Skippable Hard Binary Veto)",
+                "track_1_armed_worker": "fsi-04-armed-codmod-worker (Exclusive Write-Owner on src/main/java)",
+                "track_2_opaque_test_architect": "fsi-03-opaque-e2e-test-architect (Opaque-Box Test Suite from ORIGINAL_REQUEST.md)",
+                "eyes_1_2_reviewer": "fsi-05-forensic-auditor-dasy-gate (Code Review Pillar)",
+                "eyes_3_4_empirical_challenger": "fsi-05-forensic-auditor-dasy-gate (Adversarial Boundary Challenger)",
+                "eyes_5_6_forensic_auditor": "fsi-05-forensic-auditor-dasy-gate (Non-Skippable Hard Binary Veto)",
                 "cognitive_isolation_verified": True,
                 "forensic_auditor_verdict": forensic_verdict,
             },
@@ -84,7 +84,7 @@ def build_dossier(repo_root: Path) -> dict:
                     "status": "SATISFIED",
                     "evidence_refs": [
                         ".agents/teamwork/GATE_STATUS.md",
-                        "src/main/java/com/coba/payments/SepaInstantValidator.java",
+                        "src/main/java/com/fsi/payments/SepaInstantValidator.java",
                     ],
                 },
                 {

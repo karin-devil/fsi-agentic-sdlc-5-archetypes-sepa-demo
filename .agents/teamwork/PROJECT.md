@@ -1,7 +1,7 @@
 # Multi-Agent Project Plan & Legacy Feature Inventory (`PROJECT.md`)
 
-- **Authored By**: `coba-02-explorer-doku-miner` (Archetype 2 — Explorer, Spec Miner & Spanner Graph Doku Agent)
-- **Spanner Graph Query**: `EuroBankEnterpriseSDLCGraph` (`APPRAMO-4821` — 4 hops traversed in `182ms`, `1,420` tokens vs. `>180,000` raw grep tokens)
+- **Authored By**: `fsi-02-explorer-doku-miner` (Archetype 2 — Explorer, Spec Miner & Spanner Graph Doku Agent)
+- **Spanner Graph Query**: `EuroBankEnterpriseSDLCGraph` (`COREMOD-4821` — 4 hops traversed in `182ms`, `1,420` tokens vs. `>180,000` raw grep tokens)
 
 ---
 
@@ -20,10 +20,10 @@
 
 ## § 2. Dual-Track Execution Topology
 
-1. **Track 1 — Armed Implementation (`coba-04-armed-codmod-worker`)**:
-   - Exclusive write owner of `src/main/java/com/coba/payments/SepaInstantValidator.java`.
-2. **Track 2 — Opaque-Box Verification (`coba-03-opaque-e2e-test-architect`)**:
-   - Exclusive write owner of `src/test/java/com/coba/payments/SepaInstantValidatorTest.java` and `src/test/resources/features/sepa_instant_cutoff.feature`.
+1. **Track 1 — Armed Implementation (`fsi-04-armed-codmod-worker`)**:
+   - Exclusive write owner of `src/main/java/com/fsi/payments/SepaInstantValidator.java`.
+2. **Track 2 — Opaque-Box Verification (`fsi-03-opaque-e2e-test-architect`)**:
+   - Exclusive write owner of `src/test/java/com/fsi/payments/SepaInstantValidatorTest.java` and `src/test/resources/features/sepa_instant_cutoff.feature`.
    - Cognitively isolated from Track 1 implementation code.
-3. **6-Eyes Gate & DASY Exporter (`coba-05-forensic-auditor-dasy-gate`)**:
+3. **6-Eyes Gate & DASY Exporter (`fsi-05-forensic-auditor-dasy-gate`)**:
    - Executes Reviewer + Challenger + Forensic Auditor binary veto and generates `build/dasy_compliance_dossier.json`.

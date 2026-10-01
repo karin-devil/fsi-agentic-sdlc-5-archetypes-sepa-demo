@@ -10,15 +10,15 @@
 When an AI agent (Antigravity, Gemini CLI, Google ADK, Claude Code) inspects this repository, use the following canonical paths:
 
 - **Agent Definitions (`/agents` & `/.agents/agents`)**:
-  1. [`agents/coba-01-sentinel-spec-refiner.md`](agents/coba-01-sentinel-spec-refiner.md) — Captures `ORIGINAL_REQUEST.md` & runs 5-Stage Spec Pipeline (`/ideate` → `/pm-grill-me` → `/write-prd` → `/red-team-prd` → `/decompose-epic`).
-  2. [`agents/coba-02-explorer-doku-miner.md`](agents/coba-02-explorer-doku-miner.md) — Queries Spanner Graph (`data/spanner_graph/enterprise_sdlc_knowledge_graph.gql`) & mines legacy `legacy/trace_sepa_instant_cutoff.xslt` and `legacy/secoffice_limit_check.apt` into `.agents/teamwork/PROJECT.md`.
-  3. [`agents/coba-03-opaque-e2e-test-architect.md`](agents/coba-03-opaque-e2e-test-architect.md) — Track 2 Opaque-Box Test Architect (writes `SepaInstantValidatorTest.java` & `sepa_instant_cutoff.feature` without reading `src/main/java/`).
-  4. [`agents/coba-04-armed-codmod-worker.md`](agents/coba-04-armed-codmod-worker.md) — Track 1 Exclusive Code Write-Owner (implements `src/main/java/com/coba/payments/SepaInstantValidator.java`).
-  5. [`agents/coba-05-forensic-auditor-dasy-gate.md`](agents/coba-05-forensic-auditor-dasy-gate.md) — 6-Eyes Reviewer, Empirical Challenger, Forensic Auditor (`GATE_STATUS.md`, `DEAD_ENDS.md`, `TEST_READY.md`) & OSCAL 1.1.2 Exporter (`build/dasy_compliance_dossier.json`).
+  1. [`agents/fsi-01-sentinel-spec-refiner.md`](agents/fsi-01-sentinel-spec-refiner.md) — Captures `ORIGINAL_REQUEST.md` & runs 5-Stage Spec Pipeline (`/ideate` → `/pm-grill-me` → `/write-prd` → `/red-team-prd` → `/decompose-epic`).
+  2. [`agents/fsi-02-explorer-doku-miner.md`](agents/fsi-02-explorer-doku-miner.md) — Queries Spanner Graph (`data/spanner_graph/enterprise_sdlc_knowledge_graph.gql`) & mines legacy `legacy/trace_sepa_instant_cutoff.xslt` and `legacy/secoffice_limit_check.apt` into `.agents/teamwork/PROJECT.md`.
+  3. [`agents/fsi-03-opaque-e2e-test-architect.md`](agents/fsi-03-opaque-e2e-test-architect.md) — Track 2 Opaque-Box Test Architect (writes `SepaInstantValidatorTest.java` & `sepa_instant_cutoff.feature` without reading `src/main/java/`).
+  4. [`agents/fsi-04-armed-codmod-worker.md`](agents/fsi-04-armed-codmod-worker.md) — Track 1 Exclusive Code Write-Owner (implements `src/main/java/com/fsi/payments/SepaInstantValidator.java`).
+  5. [`agents/fsi-05-forensic-auditor-dasy-gate.md`](agents/fsi-05-forensic-auditor-dasy-gate.md) — 6-Eyes Reviewer, Empirical Challenger, Forensic Auditor (`GATE_STATUS.md`, `DEAD_ENDS.md`, `TEST_READY.md`) & OSCAL 1.1.2 Exporter (`build/dasy_compliance_dossier.json`).
 - **Skills (`/skills` & `/.agents/skills`)**:
   - [`skills/pm-grill-me/SKILL.md`](skills/pm-grill-me/SKILL.md)
   - [`skills/sepa-modernization/SKILL.md`](skills/sepa-modernization/SKILL.md)
-  - [`skills/coba-bdd-synthesizer/SKILL.md`](skills/coba-bdd-synthesizer/SKILL.md) (`python3 .agents/skills/coba-bdd-synthesizer/synthesize_bdd_suite.py`)
+  - [`skills/fsi-bdd-synthesizer/SKILL.md`](skills/fsi-bdd-synthesizer/SKILL.md) (`python3 .agents/skills/fsi-bdd-synthesizer/synthesize_bdd_suite.py`)
   - [`skills/dasy-oscal-exporter/SKILL.md`](skills/dasy-oscal-exporter/SKILL.md) (`python3 .agents/skills/dasy-oscal-exporter/export_dasy_oscal.py`)
 - **Prompts (`/prompts`)**:
   - [`prompts/01_teamwork_preview_sepa_modernization.md`](prompts/01_teamwork_preview_sepa_modernization.md)
@@ -37,7 +37,7 @@ When an AI agent (Antigravity, Gemini CLI, Google ADK, Claude Code) inspects thi
 
 Before concluding any task in this repository, always run:
 ```bash
-bash run_all_coba_demos.sh
+bash run_all_fsi_demos.sh
 ```
 or run the 5-Tier verification suite directly:
 ```bash

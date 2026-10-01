@@ -17,7 +17,7 @@ python3 verify_5_tiers.py
 
 echo ""
 echo "[Step 2/3] Synthesizing & Verifying Persona 2 Cucumber/Gherkin BDD Suite..."
-python3 .agents/skills/coba-bdd-synthesizer/synthesize_bdd_suite.py
+python3 .agents/skills/fsi-bdd-synthesizer/synthesize_bdd_suite.py
 
 echo ""
 echo "[Step 3/3] Exporting Signed DASY OSCAL 1.1.2 Compliance Dossier..."

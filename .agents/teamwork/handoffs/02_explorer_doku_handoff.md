@@ -1,4 +1,4 @@
-# 5-Part Handoff — Archetype 2 (`coba-02-explorer-doku-miner`)
+# 5-Part Handoff — Archetype 2 (`fsi-02-explorer-doku-miner`)
 
 ## 1. Summary of Completed Work
 Executed Spanner Graph multi-hop impact analysis (`182ms`, 4 hops) and mined all 6 legacy business rules (`FI-01`..`FI-06`) from `legacy/trace_sepa_instant_cutoff.xslt` and `legacy/secoffice_limit_check.apt`. Updated living C4/Arc42 architecture documentation.
@@ -15,5 +15,5 @@ Executed Spanner Graph multi-hop impact analysis (`182ms`, 4 hops) and mined all
 
 ## 5. Next Agent Instructions
 - **Parallel Fan-Out**:
-  - **Track 1 (`coba-04-armed-codmod-worker`)**: Implement `src/main/java/com/coba/payments/SepaInstantValidator.java`.
-  - **Track 2 (`coba-03-opaque-e2e-test-architect`)**: Build opaque-box 5-Tier test suite and Cucumber/Gherkin BDD scenarios without reading `src/main/java/`.
+  - **Track 1 (`fsi-04-armed-codmod-worker`)**: Implement `src/main/java/com/fsi/payments/SepaInstantValidator.java`.
+  - **Track 2 (`fsi-03-opaque-e2e-test-architect`)**: Build opaque-box 5-Tier test suite and Cucumber/Gherkin BDD scenarios without reading `src/main/java/`.

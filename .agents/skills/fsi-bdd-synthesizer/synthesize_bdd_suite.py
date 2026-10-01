@@ -12,7 +12,7 @@ from pathlib import Path
 import sys
 
 FEATURE_CONTENT = """# language: en
-@AppRaMo2030 @APPRAMO-4821 @BaFin_MaRisk_AT_7_2 @DORA_Art_11
+@CoreMod2030 @COREMOD-4821 @BaFin_MaRisk_AT_7_2 @DORA_Art_11
 Feature: SEPA Instant (SCT Inst) Cutoff, EUR 100k Limit & BaFin AML Validation
   As a EuroBank Payment Operations & Test Analyst (CAPCom A-23)
   I want deterministic validation of ISO-20022 pacs.008.001.08 instant payments
@@ -35,14 +35,14 @@ Feature: SEPA Instant (SCT Inst) Cutoff, EUR 100k Limit & BaFin AML Validation
 
     Examples:
       | amount_eur | elapsed_ms | debtor_iban            | debtor_bic  | creditor_bic | account_status | aml_status | liquidity_eur | accepted | iso_reason | legacy_code                   | fee_eur | bafin_audit |
-      | 2500.00    | 420        | DE89370400440532013000 | COBADEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 50000.00      | true     | ACCP       | OK_SCT_INST_ACCEPTED          | 3.75    | false       |
-      | 100000.00  | 10000      | DE89370400440532013000 | COBADEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 150000.00     | true     | ACCP       | OK_SCT_INST_ACCEPTED          | 150.00  | false       |
-      | 100000.01  | 1200       | DE89370400440532013000 | COBADEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 200000.00     | false    | AM02       | SECOFFICE_LIMIT_EXCEEDED_100K | 150.00  | false       |
-      | 5000.00    | 10001      | DE89370400440532013000 | COBADEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 50000.00      | false    | AB05       | SCT_INST_TIMEOUT_10S          | 7.50    | false       |
-      | 10.00      | 300        | DE89370400440532013000 | COBADEFFXXX | XX00DEFFXXX  | ACTIVE         | CLEAR      | 50000.00      | false    | RC01       | AT_018_INVALID_BIC_ROUTING    | 0.02    | false       |
-      | 15000.00   | 500        | DE00999999990000000000 | COBADEFFXXX | DEUTDEFFXXX  | ACTIVE         | FREEZE     | 50000.00      | false    | RR04       | DE_BAFIN_AML_FREEZE           | 22.50   | true        |
-      | 8000.00    | 450        | DE89370400440532013000 | COBADEFFXXX | DEUTDEFFXXX  | CLOSED         | CLEAR      | 50000.00      | false    | AC04       | ACCOUNT_CLOSED                | 12.00   | false       |
-      | 8000.00    | 450        | DE89370400440532013000 | COBADEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 7999.99       | false    | AM04       | INSUFFICIENT_LIQUIDITY        | 12.00   | false       |
+      | 2500.00    | 420        | DE89500105170532013000 | EUBKDEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 50000.00      | true     | ACCP       | OK_SCT_INST_ACCEPTED          | 3.75    | false       |
+      | 100000.00  | 10000      | DE89500105170532013000 | EUBKDEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 150000.00     | true     | ACCP       | OK_SCT_INST_ACCEPTED          | 150.00  | false       |
+      | 100000.01  | 1200       | DE89500105170532013000 | EUBKDEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 200000.00     | false    | AM02       | SECOFFICE_LIMIT_EXCEEDED_100K | 150.00  | false       |
+      | 5000.00    | 10001      | DE89500105170532013000 | EUBKDEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 50000.00      | false    | AB05       | SCT_INST_TIMEOUT_10S          | 7.50    | false       |
+      | 10.00      | 300        | DE89500105170532013000 | EUBKDEFFXXX | XX00DEFFXXX  | ACTIVE         | CLEAR      | 50000.00      | false    | RC01       | AT_018_INVALID_BIC_ROUTING    | 0.02    | false       |
+      | 15000.00   | 500        | DE00999999990000000000 | EUBKDEFFXXX | DEUTDEFFXXX  | ACTIVE         | FREEZE     | 50000.00      | false    | RR04       | DE_BAFIN_AML_FREEZE           | 22.50   | true        |
+      | 8000.00    | 450        | DE89500105170532013000 | EUBKDEFFXXX | DEUTDEFFXXX  | CLOSED         | CLEAR      | 50000.00      | false    | AC04       | ACCOUNT_CLOSED                | 12.00   | false       |
+      | 8000.00    | 450        | DE89500105170532013000 | EUBKDEFFXXX | DEUTDEFFXXX  | ACTIVE         | CLEAR      | 7999.99       | false    | AM04       | INSUFFICIENT_LIQUIDITY        | 12.00   | false       |
 """
 
 

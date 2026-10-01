@@ -7,7 +7,7 @@ set -euo pipefail
 
 PROJECT_ID="${GOOGLE_CLOUD_PROJECT:-$(gcloud config get-value project)}"
 REGION="${GOOGLE_CLOUD_REGION:-europe-west3}"
-SERVICE_NAME="${SERVICE_NAME:-coba-agy-teamwork-demo}"
+SERVICE_NAME="${SERVICE_NAME:-fsi-agy-teamwork-demo}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STAGE_DIR="$(mktemp -d)"

@@ -1,8 +1,8 @@
 ! ==============================================================================
 ! LEGACY ARTIFACT: SecOffice Gupta Team Developer (SQLWindows 4GL) Limit & AML Check
-! Module: secoffice_limit_check.apt (AppRaMo 2030 Brownfield Migration Target)
+! Module: secoffice_limit_check.apt (CoreMod 2030 Brownfield Migration Target)
 ! Author: EuroBank SecOffice Core Team (2014-2021)
-! Target Migration: Java 21 com.coba.payments.SepaInstantValidator (APPRAMO-4821)
+! Target Migration: Java 21 com.fsi.payments.SepaInstantValidator (COREMOD-4821)
 ! ==============================================================================
 
 Function: fnSecOfficeValidateInstantLimit

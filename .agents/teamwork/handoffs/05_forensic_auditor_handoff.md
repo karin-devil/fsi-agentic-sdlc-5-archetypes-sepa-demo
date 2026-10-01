@@ -1,4 +1,4 @@
-# 5-Part Handoff — Archetype 5 (`coba-05-forensic-auditor-dasy-gate`)
+# 5-Part Handoff — Archetype 5 (`fsi-05-forensic-auditor-dasy-gate`)
 
 ## 1. Summary of Completed Work
 Executed the 6-Eyes Verification Gate (Code Reviewer + Empirical Challenger + Forensic Auditor Hard Binary Veto) and exported the signed NIST OSCAL 1.1.2 compliance dossier (`build/dasy_compliance_dossier.json`) for Enterprise DASY platform.
